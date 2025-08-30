@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PakTax Tools - Free NTN Check, Salary Tax Calculator, Currency Converter, Fuel Prices in Pakistan" />
+  <title>PakTax Tools</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fa;
+      color: #333;
+    }
+    header {
+      background: #1a73e8;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #1458b4;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: white;
+      padding: 0.8rem 1rem;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+    nav a:hover {
+      background: #0c3d80;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 1rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .card h3 {
+      margin-top: 0;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0.3rem 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #1a73e8;
+      color: white;
+      cursor: pointer;
+      border: none;
+    }
+    button:hover {
+      background: #1458b4;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #1a73e8;
+      color: white;
+      margin-top: 2rem;
+    }
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.4rem; }
+      nav a { font-size: 0.9rem; padding: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>PakTax Tools</h1>
+    <p>Free Online Tax & Finance Tools for Pakistan</p>
+  </header>
+
+  <nav>
+    <a href="#tools">Tools</a>
+    <a href="#guides">Guides</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="container" id="tools">
+    <h2>Quick Tools</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>NTN Verification</h3>
+        <input type="text" placeholder="Enter CNIC/NTN">
+        <button>Check NTN</button>
+      </div>
+      <div class="card">
+        <h3>Salary Tax Calculator</h3>
+        <input type="number" placeholder="Enter Monthly Salary">
+        <button id="calc-tax">Calculate Tax</button>
+        <p id="tax-result"></p>
+      </div>
+      <div class="card">
+        <h3>Currency Converter</h3>
+        <input type="number" placeholder="Amount in PKR" id="pkr-amount">
+        <select id="currency">
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="SAR">SAR</option>
+        </select>
+        <button id="convert">Convert</button>
+        <p id="currency-result"></p>
+      </div>
+      <div class="card">
+        <h3>Fuel Prices</h3>
+        <p>Petrol: Rs. 290/L<br>Diesel: Rs. 280/L</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="guides">
+    <h2>Helpful Guides</h2>
+    <div class="card">
+      <p>✔ How to become a filer in Pakistan<br>
+         ✔ Steps to file income tax return<br>
+         ✔ Benefits of filing taxes<br>
+         ✔ Latest FBR updates</p>
+    </div>
+  </div>
+
+  <div class="container" id="contact">
+    <h2>Contact Us</h2>
+    <div class="card">
+      <p>Email: info@paktax.com<br>
+         WhatsApp: +92-300-8348821<br>
+         Office: Ghazi, Pakistan</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 PakTax Tools. All Rights Reserved.</p>
+  </footer>
+
+<script>
+  // Tax calculator
+  document.getElementById("calc-tax").addEventListener("click", function() {
+    const salary = parseFloat(document.querySelectorAll("input")[1].value);
+    let tax = 0;
+    if (salary > 50000) {
+      tax = salary * 0.05;
+    }
+    document.getElementById("tax-result").innerText = "Estimated Tax: Rs. " + tax.toFixed(0);
+  });
+
+  // Currency converter (demo rates)
+  document.getElementById("convert").addEventListener("click", function() {
+    const pkr = parseFloat(document.getElementById("pkr-amount").value);
+    const currency = document.getElementById("currency").value;
+    let rate = 1;
+    if (currency === "USD") rate = 280;
+    if (currency === "EUR") rate = 300;
+    if (currency === "SAR") rate = 75;
+    const result = (pkr / rate).toFixed(2);
+    document.getElementById("currency-result").innerText = pkr + " PKR = " + result + " " + currency;
+  });
+</script>
+
+</body>
+</html>
